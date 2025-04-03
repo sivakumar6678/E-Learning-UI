@@ -1,0 +1,105 @@
+@use "sass:color";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.course-list {
+  .filters {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+
+    @include responsive(mobile) {
+      flex-direction: column;
+    }
+
+    .search-bar {
+      flex: 1;
+      min-width: 300px;
+
+      input {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid $dark-gray;
+        border-radius: 4px;
+        font-size: 1rem;
+
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+        }
+      }
+    }
+
+    .filter-group {
+      display: flex;
+      gap: 1rem;
+
+      select {
+        padding: 0.8rem;
+        border: 1px solid $dark-gray;
+        border-radius: 4px;
+        font-size: 1rem;
+        background-color: $white;
+        cursor: pointer;
+
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+        }
+      }
+    }
+  }
+
+  .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+
+    @include responsive(mobile) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .course-card {
+    background: $white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .course-content {
+      padding: 1.5rem;
+
+      h3 {
+        color: $primary-color;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        margin-bottom: 1.5rem;
+        color: $dark-gray;
+      }
+
+      .course-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+        color: $dark-gray;
+        font-size: 0.9rem;
+      }
+    }
+  }
+} 

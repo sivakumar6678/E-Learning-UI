@@ -1,0 +1,161 @@
+@use "sass:color";
+@use "variables" as *;
+@use "mixins" as *;
+
+// Base styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-primary;
+  line-height: 1.6;
+  color: $text-color;
+  background-color: $light-gray;
+  @include body-text;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding: $spacing-xl;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+
+  @include responsive(tablet) {
+    padding: $spacing-lg;
+  }
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  @include heading;
+  color: $secondary-color;
+}
+
+h1 { font-size: $font-size-3xl; }
+h2 { font-size: $font-size-2xl; }
+h3 { font-size: $font-size-xl; }
+h4 { font-size: $font-size-lg; }
+
+// Common components
+.btn {
+  @include button;
+
+  &-primary {
+    @include button($primary-color, $white);
+  }
+
+  &-secondary {
+    @include button($secondary-color, $white);
+  }
+
+  &-accent {
+    @include button($accent-color, $white);
+  }
+
+  &-outline {
+    @include button(transparent, $primary-color);
+    border: 2px solid $primary-color;
+
+    &:hover {
+      background-color: $primary-color;
+      color: $white;
+    }
+  }
+}
+
+.card {
+  @include card;
+}
+
+.form-group {
+  margin-bottom: $spacing-md;
+
+  label {
+    display: block;
+    margin-bottom: $spacing-sm;
+    font-weight: 600;
+    color: $secondary-color;
+  }
+
+  input, select, textarea {
+    @include input;
+  }
+}
+
+// Grid system
+.grid {
+  @include grid(auto-fill, $spacing-lg);
+}
+
+// Progress tracking
+.progress-tracker {
+  @include progress-bar;
+  margin: $spacing-md 0;
+}
+
+// Course cards
+.course-card {
+  @include card;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .course-content {
+    padding: $spacing-lg;
+
+    h3 {
+      color: $primary-color;
+      margin-bottom: $spacing-sm;
+    }
+
+    .course-meta {
+      @include flex(row, space-between, center, $spacing-sm);
+      margin-bottom: $spacing-md;
+      color: $dark-gray;
+      font-size: $font-size-sm;
+    }
+
+    .course-progress {
+      @include progress-bar;
+      margin: $spacing-md 0;
+    }
+  }
+}
+
+// Category badges
+.category-badge {
+  @include badge;
+  margin-right: $spacing-sm;
+}
+
+// Utility classes
+.text-center { text-align: center; }
+.mt-1 { margin-top: $spacing-xs; }
+.mt-2 { margin-top: $spacing-sm; }
+.mt-3 { margin-top: $spacing-md; }
+.mt-4 { margin-top: $spacing-lg; }
+.mt-5 { margin-top: $spacing-xl; }
+
+.mb-1 { margin-bottom: $spacing-xs; }
+.mb-2 { margin-bottom: $spacing-sm; }
+.mb-3 { margin-bottom: $spacing-md; }
+.mb-4 { margin-bottom: $spacing-lg; }
+.mb-5 { margin-bottom: $spacing-xl; }
+
+.flex { @include flex; }
+.flex-center { @include flex-center; }
+.flex-column { @include flex(column); } 

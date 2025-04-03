@@ -1,0 +1,96 @@
+@use "sass:color";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.navbar {
+  background-color: $white;
+  box-shadow: $shadow-sm;
+  padding: $spacing-md 0;
+  position: sticky;
+  top: 0;
+  z-index: $z-index-sticky;
+
+  &-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-xl;
+    @include flex(row, space-between, center, $spacing-lg);
+
+    @include responsive(tablet) {
+      padding: 0 $spacing-lg;
+    }
+  }
+
+  &-logo {
+    @include heading($font-size-xl);
+    color: $primary-color;
+    text-decoration: none;
+    font-family: $font-secondary;
+  }
+
+  &-links {
+    @include flex(row, flex-start, center, $spacing-xl);
+
+    a {
+      @include body-text;
+      color: $text-color;
+      text-decoration: none;
+      font-weight: 500;
+      transition: $transition-base;
+      position: relative;
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: $primary-color;
+        transition: $transition-base;
+      }
+
+      &:hover {
+        color: $primary-color;
+
+        &:after {
+          width: 100%;
+        }
+      }
+    }
+
+    @include responsive(tablet) {
+      gap: $spacing-md;
+    }
+  }
+
+  &-user {
+    @include flex(row, flex-end, center, $spacing-md);
+
+    span {
+      @include flex(row, flex-start, center, $spacing-sm);
+      @include body-text;
+    }
+  }
+
+  .btn-logout {
+    @include button(transparent, $accent-color);
+    border: none;
+    padding: $spacing-sm;
+    font-size: $font-size-base;
+
+    &:hover {
+      background-color: color.adjust($accent-color, $lightness: 90%);
+    }
+  }
+
+  .user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: $border-radius-full;
+    background-color: $light-gray;
+    @include flex-center;
+    color: $primary-color;
+    font-weight: 600;
+  }
+} 
