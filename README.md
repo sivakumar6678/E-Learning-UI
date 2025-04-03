@@ -160,8 +160,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [SCSS](https://sass-lang.com/)
 - [Unsplash](https://unsplash.com/) for course images
 
-## Contact
-
-Your Name - [@yourtwitter](https://twitter.com/yourtwitter) - email@example.com
-
-Project Link: [https://github.com/yourusername/e-learning-platform](https://github.com/yourusername/e-learning-platform)
